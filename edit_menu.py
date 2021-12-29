@@ -33,6 +33,8 @@ class Edit():
     def redo(self, *args):
         self.text.edit_redo()
     
+    # @TODO: Debug function
+    
     def find(self, *args):
         self.text.tag_remove('found', '1.0', END)
         target = askstring('Find', 'Search String:')
@@ -63,7 +65,7 @@ def main(root, text, menubar):
     editmenu.add_command(label="Paste", command=objEdit.paste, accelerator="Ctrl+V")
     editmenu.add_command(label="Undo", command=objEdit.undo, accelerator="Ctrl+Z")
     editmenu.add_command(label="Redo", command=objEdit.redo, accelerator="Ctrl+Y")
-    editmenu.add_command(label="Find", command=objEdit.find, accelerator="Ctrl+F")
+    # editmenu.add_command(label="Find", command=objEdit.find, accelerator="Ctrl+F") @TODO: Debug function
     editmenu.add_separator()
     editmenu.add_command(label="Select All", command=objEdit.selectAll, accelerator="Ctrl+A")
 
