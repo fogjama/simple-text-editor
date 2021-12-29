@@ -21,9 +21,11 @@ class Format():
         if hexstr:
             self.text.config(fg=hexstr)
 
+    # @TODO: Re-write Bold, Italic, Underline, and Overstrike functions to avoid breaking font changes
+    """
     def bold(self, *args): 
         try:
-            current_tags = self.text.tag_names("sel.first")
+            current_tags = self.text.tag_names("sel.first") # Only proceed if some text is selected
             if "bold" in current_tags:
                 self.text.tag_remove("bold", "sel.first", "sel.last")
             else:
@@ -72,6 +74,13 @@ class Format():
                 self.text.tag_configure("overstrike", font=overstrike_font)
         except:
             pass
+    """
+    
+    # @TODO: Implement change_font and change_size functions
+    """"
+    def change_font(self, option):
+        pass
+    """
     
     def addDate(self):
         full_date = time.localtime()
@@ -106,23 +115,32 @@ def main(root, text, menubar):
     for value in [8,9,10,11,12,14,16,18,20,24,28,32,36]:
         ssubmenu.add_command(label=str(value), command=lambda value=value: font.configure(size=value))
     
-    formatMenu.add_command(label="Change Background", command=objFormat.changeBg)
-    formatMenu.add_command(label="Change font colour", command=objFormat.changeFg)
-    formatMenu.add_cascade(label="Font", underline=0, menu=fsubmenu)
-    formatMenu.add_cascade(label="Size", underline=0, menu=ssubmenu)
+    formatMenu.add_command(label="Change canvas background", command=objFormat.changeBg)
+    formatMenu.add_command(label="Change document font colour", command=objFormat.changeFg)
+    formatMenu.add_cascade(label="Change document font", underline=0, menu=fsubmenu)
+    formatMenu.add_cascade(label="Change document text size", underline=0, menu=ssubmenu)
     formatMenu.add_separator()
+
+    """
+    @TODO: Fix formatting functions above
+
     formatMenu.add_command(label="Bold", command=objFormat.bold, accelerator="Ctrl+B")
     formatMenu.add_command(label="Italic", command=objFormat.italics, accelerator="Ctrl+I")
     formatMenu.add_command(label="Underline", command=objFormat.underline, accelerator="Ctrl+U")
     formatMenu.add_command(label="Overstrike", command=objFormat.overstrike, accelerator="Ctrl+T+T")
+    """
+
     formatMenu.add_command(label="Add Date", command=objFormat.addDate)
 
     menubar.add_cascade(label="Format", menu=formatMenu)
 
+    """
+    @TODO: Fix formatting functions above
     root.bind_all("<Control-b>", objFormat.bold)
     root.bind_all("<Control-i>", objFormat.italics)
     root.bind_all("<Control-u>", objFormat.underline)
     root.bind_all("<Control-t>", objFormat.overstrike)
+    """
 
     root.grid_columnconfigure(0, weight=1)
     root.resizable(True, True)
