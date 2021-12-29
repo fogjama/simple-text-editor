@@ -12,7 +12,7 @@ import help_menu
 root = Tk()
 
 # Give the window a title and dimensions
-root.title("SimpleTextEditor-newfile")
+root.title("Simple Text Editor")
 root.geometry("300x250+300+300")
 root.minsize(width=400, height=400)
 
