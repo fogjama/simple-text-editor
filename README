@@ -1,0 +1,14 @@
+# Simple Text Editor
+
+## Overview
+
+This text editor is purely an exercise to familiarise myself with Tkinter text handling implementation. The bones are based on the tutorial at https://dev.to/insidiousthedev/make-a-simple-text-editor-using-python-31bd
+
+## Status
+
+Currently the editor can create unformatted text, save the text to a file, and reopen the file for editing. 
+
+## Known Issues
+
+- The suggested implementation of formatting changes creates new instances of the Font class, which then breaks further handling of font changes. It also does not allow for multiple formatting options to be applied to the same text.
+- The proposed 'Find' function throws `AttributeError: 'Edit' object has no attribute 'target'`
